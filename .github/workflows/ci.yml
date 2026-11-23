@@ -18,7 +18,7 @@ concurrency:
 env:
   # Tag da release do núcleo e do Medvita Core contra as quais as apps são escritas; são também as
   # referências do AGENTS.md e as versões mínimas dos manifestos.
-  SKELETON_REF: v0.3.0
+  SKELETON_REF: v0.5.0
   MEDVITA_CORE_REF: v0.1.0
   RUFF_VERSION: "0.17.4"
 

@@ -4,7 +4,7 @@
 
 Valem integralmente aqui, e não são repetidos:
 
-- o `AGENTS.md` do Skeleton, na tag da release do núcleo instalada (`SKELETON_REF` em `.github/workflows/ci.yml`): <https://github.com/alaorneto/skeleton/blob/v0.3.0/AGENTS.md>;
+- o `AGENTS.md` do Skeleton, na tag da release do núcleo instalada (`SKELETON_REF` em `.github/workflows/ci.yml`): <https://github.com/alaorneto/skeleton/blob/v0.5.0/AGENTS.md>;
 - o `AGENTS.md` do Medvita Core, na tag da release instalada (`MEDVITA_CORE_REF` em `.github/workflows/ci.yml`): <https://github.com/alaorneto/medvita-core/blob/v0.1.0/AGENTS.md>. As regras da suíte (camadas, acesso por contêiner, relações entre apps, dinheiro, datas, texto visível, interface, dados pessoais e de saúde, retenção, testes) são as de lá.
 
 Em divergência, vale o do núcleo; depois, o do Medvita Core. Este arquivo guarda só o que é próprio do Medvita Pro.
