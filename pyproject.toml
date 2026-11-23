@@ -1,0 +1,22 @@
+# Só configuração de ferramentas: o repositório não é um pacote pip. Cada app é publicada em .skapp.
+[tool.ruff]
+target-version = "py312"
+line-length = 120
+extend-exclude = [".claude"]
+
+[tool.ruff.lint]
+select = ["F", "E9", "B", "UP", "DJ", "I", "DTZ", "BLE", "S"]
+ignore = ["DJ012"]
+
+[tool.ruff.lint.per-file-ignores]
+"**/tests/**" = ["DJ008", "DTZ", "BLE001", "S101", "S105", "S106"]
+"tests/**" = ["DJ008", "DTZ", "BLE001", "S101", "S105", "S106"]
+"conftest.py" = ["S101"]
+"**/migrations/**" = ["I", "E501"]
+"tools/**" = ["S603", "S607"]
+
+[tool.ruff.lint.isort]
+known-first-party = ["applications", "skeleton"]
+
+[tool.ruff.format]
+exclude = ["**/migrations/**"]

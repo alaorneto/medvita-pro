@@ -1,0 +1,47 @@
+# CI: por enquanto só o lint. Os jobs de teste (PostgreSQL, núcleo e medvita-core instalados) e de
+# pacote entram com o epic de bootstrap, junto da primeira app.
+name: CI
+
+on:
+  push:
+    branches: [main]
+    tags: ["v*"]
+  pull_request:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+env:
+  # Tag da release do núcleo e do medvita-core contra as quais as apps são escritas; são também as
+  # referências do AGENTS.md e as versões mínimas dos manifestos.
+  SKELETON_REF: v0.3.0
+  MEDVITA_CORE_REF: v0.1.0
+  RUFF_VERSION: "0.17.4"
+
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
+      - uses: actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0 # v7
+        with:
+          python-version: "3.14"
+      - run: python -m pip install "ruff==${RUFF_VERSION}"
+      - run: ruff check .
+      - run: ruff format --check .
+
+  # Agregador para o ruleset da main: falha se qualquer job acima falhar.
+  ci:
+    name: CI
+    if: always()
+    needs: [lint]
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Resultado dos jobs
+        run: test "${{ needs.lint.result }}" = success
