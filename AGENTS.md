@@ -4,24 +4,24 @@
 
 Valem integralmente aqui, e não são repetidos:
 
-- o `AGENTS.md` do Skeleton, na tag da release do núcleo instalada (`SKELETON_REF` em `.github/workflows/ci.yml`): <https://github.com/alaorneto/skeleton/blob/v0.3.0/AGENTS.md>;
-- o `AGENTS.md` do medvita-core, na tag da release instalada (`MEDVITA_CORE_REF` em `.github/workflows/ci.yml`): <https://github.com/alaorneto/medvita-core/blob/v0.1.0/AGENTS.md>. As regras da suíte (camadas, acesso por contêiner, relações entre apps, dinheiro, datas, texto visível, interface, dados pessoais e de saúde, retenção, testes) são as de lá.
+- o `AGENTS.md` do Skeleton, na tag da release do núcleo instalada (`SKELETON_REF` em `.github/workflows/ci.yml`): <https://github.com/alaorneto/skeleton/blob/v0.5.0/AGENTS.md>;
+- o `AGENTS.md` do Medvita Core, na tag da release instalada (`MEDVITA_CORE_REF` em `.github/workflows/ci.yml`): <https://github.com/alaorneto/medvita-core/blob/v0.1.0/AGENTS.md>. As regras da suíte (camadas, acesso por contêiner, relações entre apps, dinheiro, datas, texto visível, interface, dados pessoais e de saúde, retenção, testes) são as de lá.
 
-Em divergência, vale o do núcleo; depois, o do medvita-core. Este arquivo guarda só o que é próprio do Medvita Pro.
+Em divergência, vale o do núcleo; depois, o do Medvita Core. Este arquivo guarda só o que é próprio do Medvita Pro.
 
 ## Ordem de leitura
 
 1. `README.md` e este arquivo.
 2. `docs/architecture.md`.
-3. Os `AGENTS.md` acima e o `docs/extension-points.md` do medvita-core, que diz por onde uma app se pluga.
+3. Os `AGENTS.md` acima e o `docs/extension-points.md` do Medvita Core, que diz por onde uma app se pluga.
 4. O `AGENTS.md` e a `docs/spec.md` da app em que vai trabalhar, quando ela existir.
 
 ## Fronteiras do repositório
 
 - A raiz não é pacote Python. Cada app é um diretório com o nome do pacote (`med_<nome>`) e o `manifest.json` na raiz dele; `app_id` `io.medvita.<nome>`, `publisher` `katua-tech`.
-- As apps daqui dependem das apps do medvita-core e, entre si, só no sentido declarado em `docs/architecture.md`.
+- As apps daqui dependem das apps do Medvita Core e, entre si, só no sentido declarado em `docs/architecture.md`.
 - Uma app só importa de outra o `service_api` dela. O sentido contrário é feito por eventos de domínio do núcleo e pelos registries exportados no `service_api`.
-- Quando uma app precisa de um ponto de extensão que o medvita-core não tem, a mudança é uma issue no medvita-core; nunca se contorna lendo modelo de outra app.
+- Quando uma app precisa de um ponto de extensão que o Medvita Core não tem, a mudança é uma issue no Medvita Core; nunca se contorna lendo modelo de outra app.
 - `tests/` da raiz guarda os cenários que cruzam apps; `tools/` guarda scripts de desenvolvimento, que nunca entram num pacote.
 
 ## Integrações externas
@@ -56,7 +56,7 @@ Próprio deste repositório:
 
 ## Proibido
 
-- Copiar código do núcleo ou do medvita-core para o repositório, ou importar módulo deles fora das superfícies públicas.
+- Copiar código do núcleo ou do Medvita Core para o repositório, ou importar módulo deles fora das superfícies públicas.
 - Abrir `system_context` num serviço de app, usar SQL cru ou relação reversa sem filtro.
 - Excluir fisicamente qualquer registro.
 - Acrescentar biblioteca de terceiros sem issue própria.
