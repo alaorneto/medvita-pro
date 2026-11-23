@@ -1,4 +1,4 @@
-# CI: por enquanto só o lint. Os jobs de teste (PostgreSQL, núcleo e medvita-core instalados) e de
+# CI: por enquanto só o lint. Os jobs de teste (PostgreSQL, núcleo e Medvita Core instalados) e de
 # pacote entram com o epic de bootstrap, junto da primeira app.
 name: CI
 
@@ -16,7 +16,7 @@ concurrency:
   cancel-in-progress: true
 
 env:
-  # Tag da release do núcleo e do medvita-core contra as quais as apps são escritas; são também as
+  # Tag da release do núcleo e do Medvita Core contra as quais as apps são escritas; são também as
   # referências do AGENTS.md e as versões mínimas dos manifestos.
   SKELETON_REF: v0.3.0
   MEDVITA_CORE_REF: v0.1.0
